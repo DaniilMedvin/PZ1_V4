@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Калькулятор покупки</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="card">
+  <h1>Калькулятор</h1>
+
+  <form id="form" novalidate>
+    <div class="field">
+      <label for="price">Вартість товару, грн</label>
+      <input id="price" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00" autocomplete="off">
+      <span class="error" id="priceError" role="alert"></span>
+    </div>
+
+    <div class="field">
+      <label for="qty">Кількість, шт</label>
+      <input id="qty" type="number" inputmode="numeric" min="1" step="1" value="1" autocomplete="off">
+      <span class="error" id="qtyError" role="alert"></span>
+    </div>
+
+    <fieldset class="field">
+      <legend>Категорія покупця</legend>
+      <div class="segments">
+        <input type="radio" name="tier" id="t0" value="0">
+        <label for="t0"><b>Звичайний</b><small>0%</small></label>
+        <input type="radio" name="tier" id="t5" value="5">
+        <label for="t5"><b>Постійний</b><small>5%</small></label>
+        <input type="radio" name="tier" id="t10" value="10">
+        <label for="t10"><b>VIP</b><small>10%</small></label>
+      </div>
+      <span class="error" id="tierError" role="alert"></span>
+    </fieldset>
+
+    <button type="submit">Розрахувати</button>
+  </form>
+
+  <section class="result" id="result" aria-live="polite" hidden>
+    <dl>
+      <div><dt>Сума без знижки</dt><dd id="subtotal">0.00</dd></div>
+      <div><dt>Знижка <span id="rate">0%</span></dt><dd id="discount">0.00</dd></div>
+    </dl>
+    <div class="total">
+      <span>До сплати</span>
+      <strong id="total">0.00 грн</strong>
+    </div>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
